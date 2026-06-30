@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/notas';
+const API_URL = 'https://tablon-notas-backend-2q4n.onrender.com/api/notas';
 
 const formulario = document.getElementById('formulario-nota');
 const contenedorNotas = document.getElementById('contenedor-notas');
@@ -100,15 +100,13 @@ formulario.addEventListener('submit', async (e) => {
     });
 
     if (respuesta.ok) {
-
-      limpiarFormulario();
-      obtenerNotas();
-
-    } else {
-
-      alert('Error al procesar la solicitud.');
-
-    }
+  limpiarFormulario();
+  obtenerNotas();
+} else {
+  const error = await respuesta.text();
+  console.log(error);
+  alert(error);
+}
 
   } catch (error) {
 
