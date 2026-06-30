@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablón de Notas Grupal (CRUD)</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input,
+    textarea,
+    button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #contenedor-notas {
+      width: 100%;
+      max-width: 700px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .nota-card {
+      background: #fffde7;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-left: 5px solid #ffeb3b;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .nota-autor {
+      font-weight: bold;
+      color: #222;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin: 0 0 5px 0;
+    }
+
+    .nota-mensaje {
+      color: #444;
+      margin: 5px 0;
+      word-break: break-word;
+    }
+
+    .nota-fecha {
+      font-size: 11px;
+      color: #888;
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    /* Botones CRUD */
+
+    .acciones {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      justify-content: flex-start;
+    }
+
+    .btn-editar {
+      background-color: #ffc107;
+      color: #212529;
+      border: none;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-editar:hover {
+      background-color: #e0a800;
+    }
+
+    .btn-eliminar {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-eliminar:hover {
+      background-color: #bd2130;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 id="titulo-formulario">Publicar Nueva Nota</h1>
+
+  <form id="formulario-nota">
+
+    <input type="hidden" id="input-id-edicion">
+
+    <input
+      type="text"
+      id="input-nombre"
+      placeholder="Tu Nombre"
+      required>
+
+    <textarea
+      id="textarea-mensaje"
+      placeholder="Escribe tu nota aquí..."
+      rows="3"
+      required></textarea>
+
+    <button type="submit" id="btn-enviar">
+      Publicar Nota
+    </button>
+
+    <button
+      type="button"
+      id="btn-cancelar"
+      style="background-color:#6c757d; display:none;">
+      Cancelar Edición
+    </button>
+
+  </form>
+
+  <div id="contenedor-notas"></div>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
